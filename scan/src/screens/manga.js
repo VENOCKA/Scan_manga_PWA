@@ -21,10 +21,8 @@ const Manga = () => {
     useEffect(() => {
         for (let e = 1; e <= manga.nombreScan; e++) {
             newArray.push(e)
-            console.log("boucle") 
         }
         newArray.reverse()
-        console.log(newArray)
         setScan(newArray)
     // eslint-disable-next-line
     },[manga])

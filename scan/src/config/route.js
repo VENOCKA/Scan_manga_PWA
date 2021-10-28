@@ -53,6 +53,7 @@ import { Online, Offline } from "react-detect-offline";
                 </Router>
               </Online>
               <Offline>
+                <Header currentTheme={currentTheme} setCurrentTheme={setCurrentTheme}></Header>
                 <p>T'a pas internet gros con</p>
               </Offline>
           </ThemeProvider>
