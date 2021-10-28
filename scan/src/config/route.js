@@ -16,6 +16,11 @@ import Scan from "../screens/scan";
   
   const Routes = () => {
 
+    const [enLigne, setEnLigne] = useState()
+    useEffect(() => {
+      setEnLigne(navigator.onLine)
+    })
+
     const [currentTheme, setCurrentTheme] = useState(lightTheme)
 
     useEffect(() => {
@@ -33,6 +38,7 @@ import Scan from "../screens/scan";
       return (
           <ThemeProvider theme={currentTheme}>
             <GlobalStyle/>
+            { enLigne === true ?
                 <Router>
                     <Header currentTheme={currentTheme} setCurrentTheme={setCurrentTheme}></Header>
                     <Switch>
@@ -48,6 +54,8 @@ import Scan from "../screens/scan";
                         <Redirect to="/"></Redirect>
                     </Switch>
                 </Router>
+            : alert("Vous n'avez pas internet")  
+          }
           </ThemeProvider>
       );
   };
