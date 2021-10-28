@@ -12,14 +12,11 @@ import Header from "../components/header";
 import GlobalStyle from "./globalStyle";
 import Manga from "../screens/manga";
 import Scan from "../screens/scan";
+import { Online, Offline } from "react-detect-offline";
 
   
   const Routes = () => {
 
-    const [enLigne, setEnLigne] = useState()
-    useEffect(() => {
-      setEnLigne(navigator.onLine)
-    })
 
     const [currentTheme, setCurrentTheme] = useState(lightTheme)
 
@@ -38,7 +35,7 @@ import Scan from "../screens/scan";
       return (
           <ThemeProvider theme={currentTheme}>
             <GlobalStyle/>
-            { enLigne === true ?
+            <Online>
                 <Router>
                     <Header currentTheme={currentTheme} setCurrentTheme={setCurrentTheme}></Header>
                     <Switch>
@@ -54,8 +51,10 @@ import Scan from "../screens/scan";
                         <Redirect to="/"></Redirect>
                     </Switch>
                 </Router>
-            : alert("Vous n'avez pas internet")  
-          }
+              </Online>
+              <Offline>
+                <p>T'a pas internet gros con</p>
+              </Offline>
           </ThemeProvider>
       );
   };
