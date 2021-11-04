@@ -2,6 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router';
 import { ImgTheme, StyledHeader } from '../../config/styled';
 import { darkTheme, lightTheme } from '../../config/thems';
+import {BsMoonFill} from 'react-icons/bs'
 
 
 const Header = ({currentTheme, setCurrentTheme}) => {
@@ -16,7 +17,7 @@ const Header = ({currentTheme, setCurrentTheme}) => {
     return (
         <StyledHeader>
             { currentTheme.name !== "ligthTheme" ? <ImgTheme src="https://image.flaticon.com/icons/png/512/25/25019.png" onClick={() =>switchTheme(lightTheme)} /> : null}
-            { currentTheme.name !== "darkTheme" ? <ImgTheme src="https://img2.freepng.fr/20180503/jzw/kisspng-lunar-phase-crescent-moon-symbol-clip-art-moon-clipart-5aeabac3cfacf1.1305081315253326758507.jpg" onClick={() =>switchTheme(darkTheme)}/> : null}
+            { currentTheme.name !== "darkTheme" ? <BsMoonFill size="100px" onClick={() =>switchTheme(darkTheme)}/> : null}
             <p onClick={ () => history.push(`/`)}>Home</p>
         </StyledHeader>
     );
